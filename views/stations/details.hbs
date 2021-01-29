@@ -1,0 +1,65 @@
+<div class="container card mt-5">
+    <header class="py-4 d-flex justify-content-between station-title row">
+        <h1 class="col-sm">
+            {{stationDetails.info.name}}
+        </h1>
+        <h2 class="d-flex flex-column col-sm text-right" id="address">
+            {{stationDetails.info.address.street}}
+            <small id="locality">{{stationDetails.info.address.district}},
+                {{stationDetails.info.address.province}}</small>
+        </h2>
+
+    </header>
+
+    <hr>
+
+    <article class="mx-2">
+        <h2>Prices</h2>
+        <div class="row prices">
+            <div class="col-sm fuel-type">
+                <li> <img src="/img/gasoil.png" alt="gasoil can" class="price-icon"> Gasoil:
+                    <ul>
+                        <li class="product"> A: {{available stationDetails.prices.gasoil.a}}</li>
+                        <li class="product">B: {{available stationDetails.prices.gasoil.b}}</li>
+                    </ul>
+                </li>
+            </div>
+            <div class="fuel-type col-sm">
+                <li> <img src="/img/petrol.png" alt="petrol pump" class="price-icon"> Petrol:
+                    <ul>
+                        <li class="product">95 E5: {{available stationDetails.prices.petrol.octanes95E5}}</li>
+                        <li class="product">98 E5: {{available stationDetails.prices.petrol.octanes98E5}}</li>
+                    </ul>
+                </li>
+            </div>
+            <div class="fuel-type col-sm">
+                <li> <img src="/img/biofuel.png" alt="gasoil can" class="price-icon"> Biofuel:
+                    <ul>
+                        <li class="product"> Biodiesel: {{available stationDetails.prices.bio.biodiesel}}</li>
+                        <li class="product"> Bioethanol: {{available stationDetails.prices.bio.bioetanol}}</li>
+                    </ul>
+                </li>
+            </div>
+            <div class="fuel-type col-sm">
+                <li> <img src="/img/gas.png" alt="gasoil can" class="price-icon"> Natural Gas:
+                    <ul>
+                        <li class="product"> Compressed: {{available stationDetails.prices.gas.compressed}}</li>
+                        <li class="product"> Liquefied: {{available stationDetails.prices.gas.liquefied}}</li>
+                    </ul>
+                </li>
+            </div>
+        </ul>
+    </div>
+
+    <hr>
+</div>
+<script>
+    const id = decodeURIComponent("{{{stationDetails.stationId}}}");
+    const district = decodeURIComponent("{{stationDetails.stationDistrict}}");
+    const street = decodeURIComponent("{{stationDetails.info.address.street}}");
+    const locality = document.getElementById('locality').innerText;
+    const address = `${street} ${locality}`;
+    const owner = decodeURIComponent("{{stationDetails.info.name}}");
+    const isUserLogged = (userId) ? true : false;
+</script>
+<script src="/js/station.js"></script>
